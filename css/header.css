@@ -12,7 +12,7 @@
     text-align: right;
 }
 
-ul{
+.menu {
     list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -28,12 +28,12 @@ ul{
     top: 20px;
 }
 
-li:first-child{
-    /* margin-right: auto; */
-    border-right: none;
-}
+/* li:first-child{
+    margin-right: auto;
+    border-right: none; 
+}*/
 
-li{
+.menu li{
     float: left;
 	/* border-right: 1px solid #bbbbbb; */
     display: inline-block;
@@ -47,7 +47,7 @@ li{
     font-size:18px;
 }
 
-li a{
+.menu li a{
     text-align: center;
     text-decoration: none;
     color: white;
@@ -110,4 +110,13 @@ li a{
 */
 .input-group{
     justify-content: center;
+}
+
+#border{
+    margin-top: 1%;
+    border:solid 1px;
+    border-color: darkgray;
+    margin-bottom: 1%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
