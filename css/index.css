@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.top{
+    display: flex;
+    justify-content: center;
+}
+
+.row{
+    /* text-align: center; */
+}
+
+.col-4{
+
+}
+
+#topimg{
+    width:100%;
+}
+
+.list1{
+    display: flex;
+
+    /* width: 30%; */
+}
+.list1 li{
+    justify-content: center;
+    list-style-type:none;
+}
+
+.list2{
+    display: flex;
+    /* width: 30%; */
+}
+.list2 li{
+    justify-content: center;
+    margin:0 auto;
+    list-style-type:none;
+}
+#img{
+    width: 100%;
+    
+}
+
+.table{
+    text-align: center;
+}
+
+.money{
+    font-size: 200%;
+}
+
+.parmition{
+    font-size: 300%;
+    text-align: center;
+    border-style: solid;
+    border
+}
