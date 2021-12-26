@@ -13,17 +13,17 @@
     /* text-align: center; */
 }
 
-.col-4{
-
+.table1{
+    text-align: left;
 }
 
 #topimg{
-    width:100%;
+    width:50%;
 }
 
 .list1{
     display: flex;
-
+    padding-left: 0%;
     /* width: 30%; */
 }
 .list1 li{
@@ -33,17 +33,17 @@
 
 .list2{
     display: flex;
-    /* width: 30%; */
+    padding-left: 0%;
+    /* width: 50; */
 }
 .list2 li{
     justify-content: center;
-    margin:0 auto;
     list-style-type:none;
 }
-#img{
-    width: 100%;
+/* #img{
+    width: 50%;
     
-}
+} */
 
 .table{
     text-align: center;
