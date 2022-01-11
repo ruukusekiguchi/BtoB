@@ -4,8 +4,6 @@ router.get('/', (req, res) => {
     res.render('login.ejs');
 });
 
-<<<<<<< Updated upstream
-=======
 //ログイン後表示：オークション画面
 //route GET, '/auction', index.ejs
 router.get('/auction', (req, res) => {
@@ -18,5 +16,4 @@ router.get('/register', (req, res) => {
     res.render('register.ejs');
 });
 
->>>>>>> Stashed changes
 module.exports = router;
