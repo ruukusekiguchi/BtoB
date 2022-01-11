@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs") %>
+<h1>会員登録</h1>
+<form action="/register" method="post">
+    <p>お名前：<br>
+    <input type="text" id="nameValue" name="name"></p>
+    <p>生年月日：</p>
+    <select id="year">
+        <option value="0">----</option>
+    </select> 年
+    <select id="month">
+        <option value="0">--</option>
+    </select> 月
+    <select id="date">
+        <option value="0">--</option>
+    </select> 日
+    <p>郵便番号：<br>
+    <input type="text" id="postcodeValue1" name="postcode1" size="3">-<input type="text" id="postcodeValue2" name="postcode2" onKeyUp="$('#postcodeValue1').zip2addr({zip2:'#postcodeValue2',pref:'#prefValue',addr:'#cityValue'});" size="4"></p>
+    <p>都道府県：<br>
+    <input type="text" id="prefValue" name="prefecture"></p>
+    <p>住所：<br>
+    <input type="text" id="cityValue" name="city"></p>
+    <p>番地：<br>
+    <input type="text" id="blockValue" name="block"></p>
+    <p>建物名・部屋番号：<br>
+    <input type="text" id="buildingValue" name="building"></p>
+    <p>メールアドレス：<br>
+    <input type="text" id="mailValue" name="mail"></p>
+    <p>パスワード：<br>
+    <input type="password" id="passwordValue" name="password"></p>
+    <input id="userEntry" type="button" value="登録">
+</form>
+<div id="output"></div>
+<script type="text/javascript" src="js/birthday2.js"></script>
+<%- include("partials/footer.ejs") %>
