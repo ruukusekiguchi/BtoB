@@ -23,9 +23,6 @@ connection.connect((error)=>{
     console.log('success');
 });
 
-
-
-
 //Body parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
