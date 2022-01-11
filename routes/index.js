@@ -18,4 +18,10 @@ router.get('/register', (req, res) => {
     res.render('register.ejs');
 });
 
+//詳細ボタン後表示：オークション詳細画面
+//route GET, '/auction/id', detail.ejs
+router.get('/auction/id', (req, res) => {
+    res.render('ditail.ejs');
+});
+
 module.exports = router;
