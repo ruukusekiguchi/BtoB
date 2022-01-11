@@ -2,8 +2,29 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 const session = require('express-session');
+const mysql = require('mysql');
+
 
 //Connect to DB
+//接続
+const connection =mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'',
+    port:3306,
+    database:'auction_master'
+});
+//error
+connection.connect((error)=>{
+    if(error){
+        console.log('error connecting:'+err.stack);
+        return;
+    }
+    console.log('success');
+});
+
+
+
 
 //Body parser
 app.use(express.urlencoded({extended: false}));
