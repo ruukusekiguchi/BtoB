@@ -1,0 +1,27 @@
+{
+  "name": "btob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruukusekiguchi/BtoB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruukusekiguchi/BtoB/issues"
+  },
+  "homepage": "https://github.com/ruukusekiguchi/BtoB#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1",
+    "passport": "^0.5.2",
+    "socket.io": "^4.4.1"
+  }
+}
