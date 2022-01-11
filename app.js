@@ -44,5 +44,6 @@ app.use(express.static(__dirname + '/views', {index: false}));
 //Routes
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
+app.use('/auction', require('./routes/auction'));
 
 app.listen(3000, () => console.log("server run and up"));
