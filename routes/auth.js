@@ -10,6 +10,7 @@ router.post('/login', (req, res) => {
 
 //ログアウト
 router.get('/logout', (req, res) => {
+    req.logout();
     res.redirect('/');
 });
 
