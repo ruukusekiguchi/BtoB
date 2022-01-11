@@ -5,11 +5,10 @@ const passport = require('passport');
 //route GET, '/auction', index.ejs
 router.post('/login', (req, res) => {
     console.log(req.body);
-    res.render('login.ejs');
+    res.render('index.ejs');
 });
 
-//ログイン後表示：オークション画面
-//route GET, '/auction', index.ejs
+//ログアウト
 router.get('/logout', (req, res) => {
     res.redirect('/');
 });
