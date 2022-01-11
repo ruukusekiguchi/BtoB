@@ -1,4 +1,4 @@
-fetch("header.ejs")
+fetch("../partials/header.ejs")
 .then(response => {
     return response.text()
 })
