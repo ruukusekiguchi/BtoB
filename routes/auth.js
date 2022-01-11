@@ -5,7 +5,7 @@ const passport = require('passport');
 //route GET, '/auction', index.ejs
 router.post('/login', (req, res) => {
     console.log(req.body);
-    res.render('index.ejs');
+    res.redirect('/auction');
 });
 
 //ログアウト
