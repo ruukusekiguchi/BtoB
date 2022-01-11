@@ -12,4 +12,10 @@ router.get('/register', (req, res) => {
     res.render('register.ejs');
 });
 
+//会員登録処理
+//route POST, '/register/edit'
+router.post('/register/edit', (req, res) => {
+    console.log(req.body);
+});
+
 module.exports = router;
