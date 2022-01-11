@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 fetch("header.ejs")
+=======
+fetch("../partials/header.ejs")
+>>>>>>> f8ed231fe5b467ae9e3c807856820435adb74acc
 .then(response => {
     return response.text()
 })
