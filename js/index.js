@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:js/index.js
 fetch("header.html")
+=======
+fetch("../partials/header.ejs")
+>>>>>>> Stashed changes:views/js/index.js
 .then(response => {
     return response.text()
 })
