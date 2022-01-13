@@ -23,6 +23,7 @@ router.get('/register', (req, res) => {
 //route GET, '/auction/id', detail.ejs
 router.get('/auction/id', (req, res) => {
     res.render('detail.ejs');
+});
 
 //会員登録処理
 //route POST, '/register/edit'
