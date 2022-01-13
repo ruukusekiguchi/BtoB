@@ -12,22 +12,22 @@ router.get('/auction', (req, res) => {
     res.render('index.ejs');
 });
 
-<<<<<<< HEAD
-=======
 //会員登録：会員登録画面
 //route GET, '/register', register.ejs
->>>>>>> origin/uchidabranch
+
 router.get('/register', (req, res) => {
     res.render('register.ejs');
 });
 
-<<<<<<< HEAD
-=======
 //詳細ボタン後表示：オークション詳細画面
 //route GET, '/auction/id', detail.ejs
 router.get('/auction/id', (req, res) => {
     res.render('detail.ejs');
+
+//会員登録処理
+//route POST, '/register/edit'
+router.post('/register/edit', (req, res) => {
+    console.log(req.body);
 });
->>>>>>> origin/uchidabranch
 
 module.exports = router;
