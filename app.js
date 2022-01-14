@@ -3,11 +3,10 @@ const app = express();
 const mysql = require("mysql");
 const passport = require('passport');
 const session = require('express-session');
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
 
 //Connect to DB
-// <<<<<<< HEAD
 // //接続
 // const connection =mysql.createConnection({
 //     host:'localhost',
@@ -20,7 +19,7 @@ const mysql = require('mysql');
 // connection.connect((error)=>{
 //     if(error){
 //         console.log('error connecting:'+err.stack);
-// =======
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
