@@ -23,6 +23,26 @@ connection.connect((error)=>{
     console.log('success');
 });
 
+//ユーザーアカウント登録
+//入力されている場合
+if(user_id.equals == true && user_name.equals == true && user_pass == true && user_email == true && user_address == true){
+let values =[
+    user_id.body.id,
+    user_name.body.id,
+    user_pass.body.id,
+    user_email.body.id,
+    user_address.body.id
+];
+connection.query("INSERT INTO user_info(user_id,user_name,user_pass,user_email,user_address),(*,*,*,*,*,*)",values,function(err, users) {
+    if(error){
+        console.log('error connecting:'+error.stack);
+        return;
+    }
+    console.log(results);
+    res.render("./login.ejs");
+});
+};
+
 //Body parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
