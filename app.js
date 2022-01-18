@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const http_socket = require('http').Server(app);
+const io_socket = require('socket.io')(http_socket);
 const mysql = require("mysql");
 const passport = require('passport');
 const session = require('express-session');
@@ -62,4 +64,43 @@ app.use('/user', require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
 app.use('/auction', require('./routes/auction'));
 
-app.listen(3000, () => console.log("server run and up"));
+http_socket.listen(3000, () => console.log("server run and up"));
+
+io_socket.on('connection', function(socket){
+    console.log('connected');
+    socket.on('c2s-join', function(msg){
+        socket.join(msg.auction);
+    });
+    socket.on('c2s-chat', function(msg){
+        values = [
+            'bid',
+            msg.auction,
+            msg.user,
+            msg.price
+        ];
+        console.log(values);
+        connection.query("INSERT INTO ??(auctionid,userid,price) VALUES(?,?,?);", values, (error, results) => {
+            if(error){
+                res.status(400).send({values:'Error'});
+                return;
+            }
+            console.log('入札完了');
+            console.log(results);
+
+            values = [
+                'bid',
+                msg.auction
+            ];
+            connection.query("SELECT MAX(price) AS maxprice FROM ?? WHERE auctionid=?;", values, (error, results) => {
+                if(error){
+                    console.log('error connecting:' + error.stack);
+                    return;
+                }
+                console.log('最高額取得');
+                console.log('c2s:' + msg.auction + msg.user + results[0].maxprice);
+                maxprice = results[0].maxprice;
+                io_socket.to(msg.auction).emit('s2c-chat', msg, maxprice);
+            });
+        });
+    });
+});

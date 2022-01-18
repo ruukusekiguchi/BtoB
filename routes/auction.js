@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 //route GET, '/auction', index.ejs
 router.get('/', (req, res) => {
     console.log(req.session.username);
-    connection.query("SELECT * FROM car_detail;", (error, results) => {
+    connection.query("SELECT * FROM car_detail c INNER JOIN auction a ON c.id = a.car_detail_id;", (error, results) => {
         if(error){
             console.log('error connecting:' + error.stack);
             return;
@@ -30,14 +30,14 @@ router.get('/:id', (req, res) => {
     let values = [
         req.params.id
     ];
-    connection.query("SELECT * FROM car_detail WHERE id=?;", values, (error, results) => {
+    connection.query("SELECT * FROM car_detail c INNER JOIN auction a ON c.id = a.car_detail_id WHERE c.id=?;", values, (error, results) => {
         if(error){
             console.log('error connecting:' + error.stack);
             return;
         }
         console.log("車情報取得");
         console.log(results);
-        res.render("./detail.ejs", {values:results});
+        res.render("./detail.ejs", {data:results});
     });
 });
 
