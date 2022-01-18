@@ -9,17 +9,15 @@
 .back{
     background-color: red;
     padding:0 auto;
-    text-align: right;
     margin-bottom: 1%;
 }
 
-.menu {
-    list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-    /* margin: 0;
-    padding: 6px; */
+.menu{
+    display: flex;
+}
+
+.atag{
+    display: flex;
 }
 
 #rogo{
@@ -27,83 +25,6 @@
     /* position: absolute; */
     left: 20px;
     top: 20px;
-}
-
-/* li:first-child{
-    margin-right: auto;
-    border-right: none; 
-}*/
-
-.menu li{
-    float: left;
-	/* border-right: 1px solid #bbbbbb; */
-    display: inline-block;
-    margin-right: 25px;
-    flex-flow:row;
-    margin-left: auto; 
-    padding:0 auto;
-    list-style: none;
-    /* width: auto; */
-    /* text-align: center; */
-    font-size:18px;
-}
-
-.menu li a{
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    display: block;
-}
-
-/**
-*ログイン、新規ボタン
-*/
-.rogindesign {
-    margin-top: 1%;
-    margin-bottom: 1%; 
-    margin-right: 1%;
-    text-align: right;
-}
-
-.login{
-    border-radius: 3px;
-    border:solid 2px black;
-    text-decoration: none;
-    color: white;
-    background-color: red;
-    font-size:100%;
-    text-align: center;
-}
-
-.login:hover {
-    border-radius: 3px;
-    border:solid 2px black;
-    border:none;
-    background: black;
-    color: white;
-    }
-
-.new{
-    border-radius: 3px;
-    border:solid 2px black;
-    text-decoration: none;
-    color: red;
-    background-color: white;
-    font-size:100%;
-}
-
-.new:hover {
-    border:solid 2px black;
-    border:none;
-    background: black;
-    color: white;
-}
-
-.new:hover a{
-    border:solid 2px black;
-    border:none;
-    background: black;
-    color: white;
 }
 
 /**
