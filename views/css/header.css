@@ -11,14 +11,28 @@
     padding:0 auto;
     margin-bottom: 1%;
     display: grid;
-
+    grid-template-columns: 5fr 1fr 1fr 1fr 1fr;
+    /* border-top: solid 3px; */
+    border-bottom: solid 3px;
 }
 
-/* .menu{
-    display: flex;
-}
 
 .atag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left:solid 2px;
+    text-decoration: none;
+    color: white;
+}
+
+
+.atag:hover{
+    background-color: white;
+    color:red;
+}
+
+/* .atag{
     display: flex;
 } */
 
