@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.rogo{
+  text-align: center;
+}
+
+#rogo{
+
+  width: 30%;
+}
+
+#submit{
+  text-align: center;
+}
+
+#loginButton{
+  text-align: center;
+}
