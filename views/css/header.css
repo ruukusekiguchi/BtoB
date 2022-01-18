@@ -10,15 +10,17 @@
     background-color: red;
     padding:0 auto;
     margin-bottom: 1%;
+    display: grid;
+
 }
 
-.menu{
+/* .menu{
     display: flex;
 }
 
 .atag{
     display: flex;
-}
+} */
 
 #rogo{
     width: 100px;
