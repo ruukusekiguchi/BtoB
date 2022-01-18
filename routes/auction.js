@@ -26,8 +26,19 @@ router.get('/', (req, res) => {
 
 //詳細ボタン後表示：オークション詳細画面
 //route GET, '/auction/id', detail.ejs
-router.get('/id', (req, res) => {
-    res.render('detail.ejs');
+router.get('/:id', (req, res) => {
+    let values = [
+        req.params.id
+    ];
+    connection.query("SELECT * FROM car_detail WHERE id=?;", values, (error, results) => {
+        if(error){
+            console.log('error connecting:' + error.stack);
+            return;
+        }
+        console.log("車情報取得");
+        console.log(results);
+        res.render("./detail.ejs", {values:results});
+    });
 });
 
 module.exports = router;
