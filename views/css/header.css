@@ -17,9 +17,14 @@
     list-style-type: none;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+    display: ;
+	/* overflow: hidden; */
     /* margin: 0;
     padding: 6px; */
+}
+
+.endpoint{
+    text-align: end;
 }
 
 #rogo{
@@ -35,17 +40,14 @@
 }*/
 
 .menu li{
-    float: left;
-	/* border-right: 1px solid #bbbbbb; */
+    /* float: left;
     display: inline-block;
     margin-right: 25px;
     flex-flow:row;
     margin-left: auto; 
     padding:0 auto;
     list-style: none;
-    /* width: auto; */
-    /* text-align: center; */
-    font-size:18px;
+    font-size:18px; */
 }
 
 .menu li a{
@@ -104,6 +106,17 @@
     border:none;
     background: black;
     color: white;
+}
+
+.logout{
+    text-align:end;
+    padding-right:1%;
+}
+
+#rogout{
+    text-decoration: none;
+    color: black;
+    font-size: 120%;
 }
 
 /**
