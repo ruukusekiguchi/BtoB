@@ -1,6 +1,104 @@
 <%- include("partials/header.ejs") %>
 
-<h1><%= data[0].car_name %>詳細画面</h1>
+
+<div class="col-3 table1">
+    <img src="../img/imagesample.png" id="topimg"  width="500" >
+    <ul class="list1">
+        <li>評価</li>
+        <p id ="evaluation" class="">4</p>
+    </ul>
+    
+</div>
+<hr>
+<div class="col-8">
+    <table class="table table-bordered table-hover">
+        <tr >
+            <th colspan="4" class="money">￥10000</th>
+        </tr>
+        <tr>
+            <td>年式</td>
+            <td>n年</td>
+            
+            <td>型式</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>ボディタイプ</td>
+            <td>軽自動車</td>
+            
+            <td>トランスミッション</td>
+            <td>AT・MT</td>
+        </tr>
+        <tr>
+            <td>シフトレバーの位置</td>
+            <td>--</td>
+            
+            <td>ギア速</td>
+            <td>--</td>
+        </tr>
+        
+        <tr>
+            <td>
+                外装色
+            </td>
+            <td>-</td>
+        
+            <td>内装色</td>
+            <td>-</td>
+        
+        </tr>
+        <tr>
+            <td>車歴</td>
+            <td></td>
+        
+            <td>走行距離</td>
+            <td>km</td>
+        <tr>
+            <td>ドア枚数</td>
+            <td>-</td>
+        
+            <td>乗員人数</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>駆動方式</td>
+            <td>-</td>
+        
+            <td>燃料</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>排気量</td>
+            <td>-</td>
+            
+            <td>車検</td>
+            <td>有・無</td>
+        
+        </tr>
+        <tr>
+            <td>修理歴</td>
+            <td>あり・なし</td>
+        
+            <td>ハンドル</td>
+            <td>右・左</td>
+        
+        </tr>
+        <tr>
+            <td>備考</td>
+            <td colspan="3">状態いいです</td>
+        </tr>
+    </table>
+</div>
+<div id ="auction" >
+    <p>入札件数:</p><p>残り時間</p>
+    <p>現在価格:</p>
+<form action="/"  method="post" id = "auction">
+    <p>金額:<input type="text" id ="auction"></p>
+    <input type ="button" class="btn btn-warning" value ="入札する">
+</form>
+</div>
+
+<p><%= data[0].car_name %>詳細画面</p>
 <table>
     <tbody>
         <tr>

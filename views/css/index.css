@@ -54,7 +54,7 @@
 .parmition{
     font-size: 300%;
     text-align: center;
-    border-style: solid;
+    border-bottom: double 10px;
 }
 
 #detail{
