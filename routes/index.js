@@ -6,4 +6,35 @@ router.get('/', (req, res) => {
     res.render('login.ejs');
 });
 
+<<<<<<< HEAD
+=======
+//ログイン後表示：オークション画面
+//route GET, '/auction', index.ejs
+router.get('/auction', (req, res) => {
+    res.render('index.ejs');
+});
+
+//会員登録：会員登録画面
+//route GET, '/register', register.ejs
+
+router.get('/register', (req, res) => {
+    res.render('register.ejs');
+});
+
+//詳細ボタン後表示：オークション詳細画面
+//route GET, '/auction/id', detail.ejs
+router.get('/auction/id', (req, res) => {
+    res.render('detail.ejs');
+});
+//マイページの遷移（仮）
+router.get('/mypage', (req, res) => {
+    res.render('mypage.ejs');
+});
+//会員登録処理
+//route POST, '/register/edit'
+router.post('/register/edit', (req, res) => {
+    console.log(req.body);
+});
+
+>>>>>>> origin/iwano_ver7
 module.exports = router;
