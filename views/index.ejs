@@ -11,74 +11,77 @@
 <body>
 <header>ヘッダー</header>
 <a href="./auth/logout">ログアウト</a>
-<div class="container">
+<h1>ようこそ<%= data.user_name %>様</h1>
+<% for(var i = 0; i < values.length; i++) { %>
+    <div class="container">
+        <div class="row row-0">
+            <div class="col-6">
+                <h1><%= values[i].car_maker %></h1>
+            </div>
+            <div class="col-6">
+                <h2><%= values[i].car_name %></h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
     <div class="row row-0">
-        <div class="col-6">
-            <h1>メーカー</h1>
+        <div class="col-4 table1">
+            <img src="../img/imagesample.png" id="topimg">
+            <ul class="list1">
+                <li>評価</li>
+                <li><img src="../make_img/star.png" id="img" width="40"></li>
+                <li><img src="../make_img/star.png" id="img" width="40"></li>
+                <li><img src="../make_img/nonstar.png" id="img"width="40"></li>
+                <li><img src="../make_img/nonstar.png"id="img"width="40"></li>
+                <li><img src="../make_img/nonstar.png"id="img"width="40"></li>
+            </ul>
+            <ul class="list1">
+                <li>評価</li>
+                <li><img src="../make_img/star.png"id="img"width="40"></li>
+                <li><img src="../make_img/star.png"id="img"width="40"></li>
+                <li><img src="../make_img/star.png"id="img"width="40"></li>
+                <li><img src="../make_img/star.png"id="img"width="40"></li>
+                <li><img src="../make_img/star.png"id="img"width="40"></li>
+            </ul>
         </div>
-        <div class="col-6">
-            <h2>Piyo</h2>
+        <div class="col-4">
+            <table class="table table-bordered table-hover">
+                <tr >
+                    <th colspan="2" class="money">￥10000</th>
+                </tr>
+                <tr>
+                    <td>年式</td>
+                    <td>n年</td>
+                </tr>
+                <tr>
+                    <td>型式</td>
+                    <td>-</td>
+                </tr>            
+                <tr>
+                    <td>排気量</td>
+                    <td>-</td>
+                </tr>            
+                <tr>
+                    <td>走行距離</td>
+                    <td>km</td>
+                </tr>
+                <tr>
+                    <td>車検</td>
+                    <td>有・無</td>
+                </tr>
+                <tr>
+                    <td>トランスミッション</td>
+                    <td>AT・MT</td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="col-4">
+            <p class="parmition">時間</p>
+            <a href="/auction/id" class="parmition" id="detail">詳細</a>
         </div>
     </div>
-</div>
-<div class="container">
-<div class="row row-0">
-    <div class="col-4 table1">
-        <img src="../img/imagesample.png" id="topimg">
-        <ul class="list1">
-            <li>評価</li>
-            <li><img src="../make_img/star.png" id="img" width="40"></li>
-            <li><img src="../make_img/star.png" id="img" width="40"></li>
-            <li><img src="../make_img/nonstar.png" id="img"width="40"></li>
-            <li><img src="../make_img/nonstar.png"id="img"width="40"></li>
-            <li><img src="../make_img/nonstar.png"id="img"width="40"></li>
-        </ul>
-        <ul class="list1">
-            <li>評価</li>
-            <li><img src="../make_img/star.png"id="img"width="40"></li>
-            <li><img src="../make_img/star.png"id="img"width="40"></li>
-            <li><img src="../make_img/star.png"id="img"width="40"></li>
-            <li><img src="../make_img/star.png"id="img"width="40"></li>
-            <li><img src="../make_img/star.png"id="img"width="40"></li>
-        </ul>
     </div>
-    <div class="col-4">
-        <table class="table table-bordered table-hover">
-            <tr >
-                <th colspan="2" class="money">￥10000</th>
-            </tr>
-            <tr>
-                <td>年式</td>
-                <td>n年</td>
-            </tr>
-            <tr>
-                <td>型式</td>
-                <td>-</td>
-            </tr>            
-            <tr>
-                <td>排気量</td>
-                <td>-</td>
-            </tr>            
-            <tr>
-                <td>走行距離</td>
-                <td>km</td>
-            </tr>
-            <tr>
-                <td>車検</td>
-                <td>有・無</td>
-            </tr>
-            <tr>
-                <td>トランスミッション</td>
-                <td>AT・MT</td>
-            </tr>
-            
-        </table>
-    </div>
-    <div class="col-4">
-        <p class="parmition">時間</p>
-        <a href="/auction/id" class="parmition" id="detail">詳細</a>
-    </div>
-</div>
-</div>
+<% } %>
 </body>
 </html>
