@@ -1,10 +1,14 @@
 <%- include("partials/header.ejs") %>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.zip2addr.js"></script>
 <h1>会員登録</h1>
 <form action="/register" method="post">
     <p>ユーザーid</p>
     <input type ="text" id = "user_id" name ="user_id">
     <p>お名前：<br>
     <input type="text" id="nameValue" name="name"></p>
+    <p>郵便番号：<br>
+    <input type="text" id="postcodeValue1" name="postcode1" size="3">-<input type="text" id="postcodeValue2" name="postcode2" onKeyUp="$('#postcodeValue1').zip2addr({zip2:'#postcodeValue2',pref:'#prefValue',addr:'#cityValue'});" size="4"></p>
     <p>都道府県：<br>
     <input type="text" id="prefValue" name="prefecture"></p>
     <p>住所：<br>
@@ -19,5 +23,3 @@
     <input type="password" id="passwordValue" name="password"></p>
     <input id="userEntry" type="button" value="登録">
 </form>
-<div id="output"></div>
-<script type="text/javascript" src="js/birthday2.js"></script>
