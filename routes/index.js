@@ -24,7 +24,10 @@ router.get('/register', (req, res) => {
 router.get('/auction/id', (req, res) => {
     res.render('detail.ejs');
 });
-
+//マイページの遷移（仮）
+router.get('/mypage', (req, res) => {
+    res.render('mypage.ejs');
+});
 //会員登録処理
 //route POST, '/register/edit'
 router.post('/register/edit', (req, res) => {
