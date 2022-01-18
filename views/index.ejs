@@ -50,19 +50,19 @@
                 </tr>
                 <tr>
                     <td>年式</td>
-                    <td>n年</td>
+                    <td><%= values[i].car_age %>年</td>
                 </tr>
                 <tr>
                     <td>型式</td>
-                    <td>-</td>
+                    <td><%= values[i].car_model %></td>
                 </tr>            
                 <tr>
                     <td>排気量</td>
-                    <td>-</td>
+                    <td><%= values[i].car_displacement %></td>
                 </tr>            
                 <tr>
                     <td>走行距離</td>
-                    <td>km</td>
+                    <td><%= values[i].car_mileage %>km</td>
                 </tr>
                 <tr>
                     <td>車検</td>
@@ -77,7 +77,7 @@
         </div>
         <div class="col-4">
             <p class="parmition">時間</p>
-            <a href="/auction/id" class="parmition" id="detail">詳細</a>
+            <a href="/auction/<%= values[i].id %>" class="parmition" id="detail">詳細</a>
         </div>
     </div>
     </div>
