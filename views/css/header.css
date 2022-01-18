@@ -10,14 +10,16 @@
     background-color: red;
     padding:0 auto;
     margin-bottom: 1%;
+    display: block;
 }
 
 .menu{
     display: flex;
 }
 
-.atag{
+.endpoint{
     display: flex;
+    justify-content:center;
 }
 
 #rogo{
