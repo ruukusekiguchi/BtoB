@@ -11,7 +11,7 @@
     padding:0 auto;
     margin-bottom: 1%;
     display: grid;
-    grid-template-columns: 5fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 5fr 1fr 1fr 1fr 1fr 1fr;
     /* border-top: solid 3px; */
     border-bottom: solid 3px;
 }
@@ -43,14 +43,13 @@
     top: 20px;
 }
 
-.rogout{
-    
-}
 
 /**
 *検索バー
 */
-.input-group{
+
+#serch{
+    display: flex;
     justify-content: center;
 }
 
@@ -62,3 +61,4 @@
     margin-left: 15%;
     margin-right: 15%;
 }
+
