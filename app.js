@@ -58,6 +58,7 @@ app.use(express.static(__dirname + '/views', {index: false}));
 
 //Routes
 app.use('/', require('./routes/index'));
+app.use('/user', require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
 app.use('/auction', require('./routes/auction'));
 
