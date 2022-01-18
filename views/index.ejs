@@ -76,8 +76,10 @@
             </table>
         </div>
         <div class="col-4">
-            <p class="parmition"><%= values[i].end_time %></p>
-            <a href="/auction/<%= values[i].id %>" class="parmition" id="detail">詳細</a>
+            <div class="parmition"><%= values[i].end_time %> </div>
+            <div class="parmitionposition">
+                <a href="/auction/<%= values[i].car_detail_id %>" class="parmition" id="detail">詳細</a>
+            </div>
         </div>
     </div>
 <% } %>
