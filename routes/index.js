@@ -12,4 +12,13 @@ router.get('/auction', (req, res) => {
     res.render('index.ejs');
 });
 
+//支払い画面
+router.get('/payment_check', (req, res) => {
+    res.render('payment_check.ejs');
+});
+
+//支払い画面
+router.get('/payment', (req, res) => {
+    res.render('payment.ejs');
+});
 module.exports = router;
