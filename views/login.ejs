@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./scss/login.scss">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
     <script src="./js/login.js"></script>
@@ -15,16 +14,16 @@
     <div class="rogo">
         <img id="rogo" src="./make_img/ロゴ.png">
     </div>
-    <div class="d-grid gap-2  mx-auto">
+    <div class="d-grid gap-2 mx-auto center-block">
         <div class="form-group">
             <label class="col-sm-5 col-form-label">ユーザID：</label>
-            <div class="col-sm-10">
+            <div class="col-sm-5">
                 <input class="form-control" id="emailValue" type="text" name="email">
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" role="group">
             <label class="control-label col-sm-5">パスワード：</label>
-            <div class="col-sm-10">
+            <div class="col-sm-5">
                 <input class="form-control" id="passValue" type="password" name="password">
             </div>
         </div>
@@ -37,4 +36,6 @@
 <p id="loginButton"><a href="/user/add">新規登録へ</a></p>
 </form>
 </div>
+</body>
+</html>
 
