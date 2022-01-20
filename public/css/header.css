@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/**
+*メニューバーデザイン
+*/
+.back{
+    background-color: red;
+    padding:0 auto;
+    margin-bottom: 1%;
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr 1fr;
+    /* border-top: solid 3px; */
+    border-bottom: solid 3px;
+}
+
+
+.atag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left:solid 2px;
+    text-decoration: none;
+    color: white;
+}
+
+
+.atag:hover{
+    background-color: white;
+    color:red;
+}
+
+/* .atag{
+    display: flex;
+} */
+
+#rogo{
+    width: 100px;
+    /* position: absolute; */
+    left: 20px;
+    top: 20px;
+}
+
+
+/**
+*検索バー
+*/
+
+#serch{
+    display: flex;
+    justify-content: center;
+}
+
+#border{
+    margin-top: 1%;
+    border:solid 1px;
+    border-color: darkgray;
+    margin-bottom: 1%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
