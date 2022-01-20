@@ -62,3 +62,11 @@
     margin-right: 15%;
 }
 
+.input-group{
+display: flex;
+justify-content: center;
+}
+
+input{
+    text-align: center;
+}
