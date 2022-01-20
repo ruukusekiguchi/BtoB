@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
-    <script src="../js/index.js"></script>
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
+    <script src="/js/index.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
     <title>Toppage</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row row-0">
         <div class="col-4 table1">
-            <img src="../img/<%= values[i].car_detail_id %>.jpg" id="topimg">
+            <img src="/img/<%= values[i].car_detail_id %>.jpg" id="topimg">
             <ul class="list1">
                 <li>総合評価:</li>
                 <li>4</li>
@@ -72,7 +72,27 @@
             </table>
         </div>
         <div class="col-4">
-            <div class="parmition"><%= values[i].end_time %> </div>
+            <div id="endTime" class="parmition"></div>
+            <script>
+                function countdownTimer(){
+                    var now_time = new Date();
+                    let end_time = new Date("<%= values[i].end_time %>");
+                    var difference = end_time - now_time;
+                
+                    var hour = Math.floor(difference / (1000 * 60 * 60));
+                    difference -= (hour *(1000 * 60 * 60));
+                    var minutes = Math.floor(difference / (1000 * 60));
+                    difference -= (minutes * (1000 * 60));
+                    var second = Math.floor(difference / 1000);
+                    var remaining = "";
+                    remaining += ("0" + hour).slice(-2) + ':';
+                    remaining += ("0" + minutes).slice(-2) + ':';
+                    remaining += ("0" + second).slice(-2);
+                    document.getElementById("endTime").innerHTML = remaining;
+                    setTimeout(countdownTimer, 250);
+                }
+                countdownTimer();
+            </script>
             <div class="parmitionposition">
                 <a href="/auction/<%= data.id %>/<%= values[i].car_detail_id %>" class="parmition" id="detail">詳細</a>
             </div>
