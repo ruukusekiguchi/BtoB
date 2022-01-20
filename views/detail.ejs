@@ -1,0 +1,174 @@
+<%- include("partials/header.ejs") %>
+
+
+<div class="col-3 table1">
+    <img src="../img/imagesample.png" id="topimg"  width="500" >
+    <ul class="list1">
+        <li>評価</li>
+        <p id ="evaluation" class="">4</p>
+    </ul>
+    
+</div>
+<hr>
+<div class="col-8">
+    <table class="table table-bordered table-hover">
+        <tr >
+            <th colspan="4" class="money">￥10000</th>
+        </tr>
+        <tr>
+            <td>年式</td>
+            <td>n年</td>
+            
+            <td>型式</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>ボディタイプ</td>
+            <td>軽自動車</td>
+            
+            <td>トランスミッション</td>
+            <td>AT・MT</td>
+        </tr>
+        <tr>
+            <td>シフトレバーの位置</td>
+            <td>--</td>
+            
+            <td>ギア速</td>
+            <td>--</td>
+        </tr>
+        
+        <tr>
+            <td>
+                外装色
+            </td>
+            <td>-</td>
+        
+            <td>内装色</td>
+            <td>-</td>
+        
+        </tr>
+        <tr>
+            <td>車歴</td>
+            <td></td>
+        
+            <td>走行距離</td>
+            <td>km</td>
+        <tr>
+            <td>ドア枚数</td>
+            <td>-</td>
+        
+            <td>乗員人数</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>駆動方式</td>
+            <td>-</td>
+        
+            <td>燃料</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>排気量</td>
+            <td>-</td>
+            
+            <td>車検</td>
+            <td>有・無</td>
+        
+        </tr>
+        <tr>
+            <td>修理歴</td>
+            <td>あり・なし</td>
+        
+            <td>ハンドル</td>
+            <td>右・左</td>
+        
+        </tr>
+        <tr>
+            <td>備考</td>
+            <td colspan="3">状態いいです</td>
+        </tr>
+    </table>
+</div>
+<div id ="auction" >
+    <p>入札件数:</p><p>残り時間</p>
+    <p>現在価格:</p>
+<form action="/"  method="post" id = "auction">
+    <p>金額:<input type="text" id ="auction"></p>
+    <input type ="button" class="btn btn-warning" value ="入札する">
+</form>
+</div>
+
+<p><%= data[0].car_name %>詳細画面</p>
+<table>
+    <tbody>
+        <tr>
+            <td>スタート時刻：</td>
+            <td><%= data[0].start_time %></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>現在時刻：</td>
+            <td id="nowDate"></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>終了時刻：</td>
+            <td id="endDate"><%= data[0].end_time %></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>残り時間：</td>
+            <td id="remainingDate"></td>
+        </tr>
+    </tbody>
+</table>
+    
+<p>現在価格：<p>
+<h1 id="nowprice"><%= data[0].bid_price %></h1>
+
+<form id="chatForm">
+    
+    入札金額<input id="price" type="text">
+    <input type="submit" class="button" value="bit"></p>
+</form>
+
+<ul id="output">
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script> 
+    const auctionid =  "<%= data[0].id %>";
+
+    var endDate = new Date(document.getElementById("endDate").textContent);
+    console.log(endDate);
+    function countdownTimer(){
+        var nowDate = new Date();
+        var difference = endDate - nowDate;
+
+        if(difference >= 0){
+            var hour = Math.floor(difference / (1000 * 60 * 60));
+            difference -= (hour *(1000 * 60 * 60));
+            var minutes = Math.floor(difference / (1000 * 60));
+            difference -= (minutes * (1000 * 60));
+            var second = Math.floor(difference / 1000);
+            var remaining = "";
+            remaining += ("0" + hour).slice(-2) + ':';
+            remaining += ("0" + minutes).slice(-2) + ':';
+            remaining += ("0" + second).slice(-2);
+            document.getElementById("nowDate").innerHTML = new Date().toString();
+            document.getElementById("remainingDate").innerHTML = remaining;
+            setTimeout(countdownTimer, 250);
+        }
+        else{
+            var inputElement = document.querySelector('input[type="submit"]');
+            inputElement.disabled = true;
+        }
+    }
+    countdownTimer();
+</script>
+<script src="/js/javascript.js"></script>
+
+<%- include("partials/footer.ejs") %>

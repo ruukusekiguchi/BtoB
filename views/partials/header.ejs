@@ -8,23 +8,18 @@
 <body>
     
 <div class="back">
-    <ul class="menu">
-            <li class="list"><a href="/auction" class="toplink"><img src="../make_img/ロゴ.png" id="rogo"></a></li>
-            <li class="list"><a href=""class="atag">オークション登録</a></li>
-            <li class="list"><a href=""class="atag">オークション編集</a></li>
-            <li class="list"><a href=""class="atag">会員情報</a></li>
-            <li class="list"><a href=""class="atag">お問い合わせ</a></li>
-    </ul>
+            <a href="/auction" class="toplink"><img src="../make_img/ロゴ.png" id="rogo"></a>
+                <a href=""class="atag">オークション登録</a>
+                <a href=""class="atag">オークション編集</a>
+                <a href=""class="atag">会員情報</a>
+                <a href=""class="atag">お問い合わせ</a>
+                <a href="./auth/logout"class="atag">ログアウト</a>
 </div>
 
 <form>
-    <div  class="input-group center-block">
-        <div>
-        <input type="text" class="form-control ">
+        <div class="input-group">
+            <input type="text" id="serch" class="form-control col-xs-5">
+            <button class="btn btn-outline-danger" type="submit">検索</button>
         </div>
-        <span class="input-group-btn">
-        <button class="btn btn-outline-danger" type="submit">検索</button>
-        </span>
-    </div>
-    <div id="border"></div>
 </form>
+    <div id="border"></div>

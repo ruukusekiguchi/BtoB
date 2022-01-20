@@ -4,6 +4,7 @@
     
 }
 
+
 .top{
     display: flex;
     justify-content: center;
@@ -26,6 +27,7 @@
     padding-left: 0%;
     /* width: 30%; */
 }
+
 .list1 li{
     justify-content: center;
     list-style-type:none;
@@ -45,9 +47,17 @@
     font-size: 200%;
 }
 
+.parmitionposition{
+    text-align: center;
+}
+
 .parmition{
     font-size: 300%;
     text-align: center;
-    border-style: solid;
-    border
+    border-bottom: double 10px;
+}
+
+#detail{
+    text-decoration: none;
+    border: none;
 }
