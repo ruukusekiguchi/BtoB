@@ -15,7 +15,7 @@
     <img src="/img/<%= data[0].car_detail_id %>.jpg" id="topimg"  width="500" >
     <ul class="list1">
         <li>評価</li>
-        <p id ="evaluation" class="">4</p>
+        <p id ="evaluation" class=""><%= data[0].car_evapoint %>点</p>
     </ul>
 </div>
 <hr>
@@ -119,10 +119,10 @@
     </table>
 </div>
 <div id ="auction" >
-    <p>入札件数:</p><p id="remainingDate">残り時間</p>
-    <p>現在価格:<%= data[0].bid_price %></p>
-<form action="/"  method="post" id = "auction">
-    <p>金額:<input type="text" id ="auction"></p>
+    <p>入札件数:</p><p id="remainingDate"></p>
+    <p id="nowprice">現在価格:<%= data[0].bid_price %></p>
+<form id = "chatForm">
+    <p>金額:<input id="price" type="text"></p>
     <input type ="button" class="btn btn-warning" value ="入札する">
 </form>
 </div>
@@ -131,7 +131,7 @@
 <script> 
     const auctionid =  "<%= data[0].id %>";
     const userid =  "<%= userid %>";
-    let end_time = "<%= data[0].end_time %>";
+    let end_time = new Date("<%= data[0].end_time %>");
 
     console.log(end_time);
     function countdownTimer(){
@@ -149,7 +149,6 @@
             remaining += ("0" + hour).slice(-2) + ':';
             remaining += ("0" + minutes).slice(-2) + ':';
             remaining += ("0" + second).slice(-2);
-            document.getElementById("nowDate").innerHTML = new Date().toString();
             document.getElementById("remainingDate").innerHTML = remaining;
             setTimeout(countdownTimer, 250);
         }
