@@ -2,7 +2,7 @@
 
 
 <div class="col-3 table1">
-    <img src="../img/imagesample.png" id="topimg"  width="500" >
+    <img src="../img/<%= data[0].car_detail_id %>.jpg" id="topimg"  width="500" >
     <ul class="list1">
         <li>評価</li>
         <p id ="evaluation" class="">4</p>
@@ -17,136 +17,117 @@
         </tr>
         <tr>
             <td>年式</td>
-            <td>n年</td>
+            <td><%= data[0].car_age %>年</td>
             
             <td>型式</td>
-            <td>--</td>
+            <td><%= data[0].car_model %></td>
         </tr>
         <tr>
             <td>ボディタイプ</td>
-            <td>軽自動車</td>
+            <td><%= data[0].car_shape %></td>
             
             <td>トランスミッション</td>
-            <td>AT・MT</td>
+            <% if(data[0].car_inspection == 0){ %>
+                <td>AT</td>
+            <% } else{ %>
+                <td>MT</td>
+            <% } %>
         </tr>
         <tr>
             <td>シフトレバーの位置</td>
-            <td>--</td>
+            <% if(data[0].car_leverposition == 0){ %>
+                <td>フロア</td>
+            <% } else{ %>
+                <td>コラム</td>
+            <% } %>
             
             <td>ギア速</td>
-            <td>--</td>
+            <td><%= data[0].car_gear %>速</td>
         </tr>
         
         <tr>
             <td>
                 外装色
             </td>
-            <td>-</td>
+            <td><%= data[0].car_ecolor %></td>
         
             <td>内装色</td>
-            <td>-</td>
+            <td><%= data[0].car_icolor %></td>
         
         </tr>
         <tr>
             <td>車歴</td>
-            <td></td>
+            <td><%= data[0].car_history %>年</td>
         
             <td>走行距離</td>
-            <td>km</td>
+            <td><%= data[0].car_mileage %>km</td>
         <tr>
             <td>ドア枚数</td>
-            <td>-</td>
+            <td><%= data[0].car_door %>マイ</td>
         
             <td>乗員人数</td>
-            <td>-</td>
+            <td><%= data[0].car_crew %>人</td>
         </tr>
         <tr>
             <td>駆動方式</td>
-            <td>-</td>
+            <td><%= data[0].car_drivesys %></td>
         
             <td>燃料</td>
-            <td>-</td>
+            <td><%= data[0].car_fuel %></td>
         </tr>
         <tr>
             <td>排気量</td>
-            <td>-</td>
+            <td><%= data[0].car_displacement %>cc</td>
             
             <td>車検</td>
-            <td>有・無</td>
+            <% if(data[0].car_inspection == 0){ %>
+                <td>無</td>
+            <% } else{ %>
+                <td>無</td>
+            <% } %>
         
         </tr>
         <tr>
             <td>修理歴</td>
-            <td>あり・なし</td>
+            <% if(data[0].car_repairhistoroy == 0){ %>
+                <td>無し</td>
+            <% } else{ %>
+                <td>あり</td>
+            <% } %>
         
             <td>ハンドル</td>
-            <td>右・左</td>
+            <% if(data[0].car_fhandle == null){ %>
+                <td>右</td>
+            <% } else{ %>
+                <td>左</td>
+            <% } %>
         
         </tr>
         <tr>
             <td>備考</td>
-            <td colspan="3">状態いいです</td>
+            <td colspan="3"><%= data[0].car_remarks %></td>
         </tr>
     </table>
 </div>
 <div id ="auction" >
-    <p>入札件数:</p><p>残り時間</p>
-    <p>現在価格:</p>
+    <p>入札件数:</p><p id="remainingDate">残り時間</p>
+    <p>現在価格:<%= data[0].bid_price %></p>
 <form action="/"  method="post" id = "auction">
     <p>金額:<input type="text" id ="auction"></p>
     <input type ="button" class="btn btn-warning" value ="入札する">
 </form>
 </div>
 
-<p><%= data[0].car_name %>詳細画面</p>
-<table>
-    <tbody>
-        <tr>
-            <td>スタート時刻：</td>
-            <td><%= data[0].start_time %></td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td>現在時刻：</td>
-            <td id="nowDate"></td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td>終了時刻：</td>
-            <td id="endDate"><%= data[0].end_time %></td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td>残り時間：</td>
-            <td id="remainingDate"></td>
-        </tr>
-    </tbody>
-</table>
-    
-<p>現在価格：<p>
-<h1 id="nowprice"><%= data[0].bid_price %></h1>
-
-<form id="chatForm">
-    
-    入札金額<input id="price" type="text">
-    <input type="submit" class="button" value="bit"></p>
-</form>
-
-<ul id="output">
-</ul>
-
 <script src="/socket.io/socket.io.js"></script>
 <script> 
     const auctionid =  "<%= data[0].id %>";
+    let end_time = "<%= data[0].end_time %>";
 
-    var endDate = new Date(document.getElementById("endDate").textContent);
-    console.log(endDate);
+    console.log(end_time);
     function countdownTimer(){
-        var nowDate = new Date();
-        var difference = endDate - nowDate;
+        var now_time = new Date();
+        var difference = end_time - now_time;
+        console.log(difference);
 
         if(difference >= 0){
             var hour = Math.floor(difference / (1000 * 60 * 60));

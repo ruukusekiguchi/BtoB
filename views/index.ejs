@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row row-0">
         <div class="col-4 table1">
-            <img src="../img/imagesample.png" id="topimg">
+            <img src="../img/<%= values[i].car_detail_id %>.jpg" id="topimg">
             <ul class="list1">
                 <li>内装:</li>
                 <li>4</li>
@@ -58,11 +58,19 @@
                 </tr>
                 <tr>
                     <td>車検</td>
-                    <td>有・無</td>
+                    <% if(values[i].car_inspection == 0){ %>
+                        <td>無</td>
+                    <% } else{ %>
+                        <td>無</td>
+                    <% } %>
                 </tr>
                 <tr>
                     <td>トランスミッション</td>
-                    <td>AT・MT</td>
+                    <% if(values[i].car_inspection == 0){ %>
+                        <td>AT</td>
+                    <% } else{ %>
+                        <td>MT</td>
+                    <% } %>
                 </tr>
                 
             </table>
