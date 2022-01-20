@@ -19,7 +19,7 @@
 }
 
 #topimg{
-    width:50%;
+    width:90%;
 }
 
 .list1{
@@ -60,4 +60,8 @@
 #detail{
     text-decoration: none;
     border: none;
+}
+
+.con{
+    border-bottom: solid 1px;
 }
