@@ -6,7 +6,6 @@ router.get('/', (req, res) => {
     res.render('login.ejs');
 });
 
-<<<<<<< HEAD
 //ログイン後表示：オークション画面
 //route GET, '/auction', index.ejs
 router.get('/auction', (req, res) => {
@@ -22,6 +21,5 @@ router.get('/payment_check', (req, res) => {
 router.get('/payment', (req, res) => {
     res.render('payment.ejs');
 });
-=======
->>>>>>> a45d97178b05005a843e7034c8c8cba7307f4017
+
 module.exports = router;

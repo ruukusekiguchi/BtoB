@@ -5,22 +5,6 @@ const io_socket = require('socket.io')(http_socket);
 const mysql = require("mysql");
 const passport = require('passport');
 const session = require('express-session');
-// const mysql = require('mysql');
-
-
-//Connect to DB
-// //接続
-// const connection =mysql.createConnection({
-//     host:'localhost',
-//     user:'root',
-//     password:'',
-//     port:3306,
-//     database:'auction_master'
-// });
-// //error
-// connection.connect((error)=>{
-//     if(error){
-//         console.log('error connecting:'+err.stack);
 
 const connection = mysql.createConnection({
     host: 'localhost',
