@@ -24,7 +24,13 @@
 .center{
   text-align: center;
 }
-/* 
-.input{
-  text-align: center;
-} */
+
+.d-grid{
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+}
+
+.form{
+
+}
