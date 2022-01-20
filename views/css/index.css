@@ -19,7 +19,7 @@
 }
 
 #topimg{
-    width:50%;
+    width:70%;
 }
 
 .list1{
@@ -31,7 +31,7 @@
 .list1 li{
     justify-content: center;
     list-style-type:none;
-    font-size: 200%;
+    font-size: 250%;
 }
 
 /* #img{
