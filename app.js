@@ -56,6 +56,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Static folder
+app.use(express.static(__dirname + '/public', {index: false}));
 app.use(express.static(__dirname + '/views', {index: false}));
 
 //Routes
@@ -72,35 +73,19 @@ io_socket.on('connection', function(socket){
         socket.join(msg.auction);
     });
     socket.on('c2s-chat', function(msg){
+        console.log(req.session.username.id);
         values = [
-            'bid',
             msg.auction,
-            msg.user,
-            msg.price
+            req.session.username.id
         ];
         console.log(values);
-        connection.query("INSERT INTO ??(auctionid,userid,price) VALUES(?,?,?);", values, (error, results) => {
+        connection.query("INSERT INTO bid_history(user_info_id,auction_id) VALUES(?,?);", values, (error, results) => {
             if(error){
                 res.status(400).send({values:'Error'});
                 return;
             }
             console.log('入札完了');
             console.log(results);
-
-            values = [
-                'bid',
-                msg.auction
-            ];
-            connection.query("SELECT MAX(price) AS maxprice FROM ?? WHERE auctionid=?;", values, (error, results) => {
-                if(error){
-                    console.log('error connecting:' + error.stack);
-                    return;
-                }
-                console.log('最高額取得');
-                console.log('c2s:' + msg.auction + msg.user + results[0].maxprice);
-                maxprice = results[0].maxprice;
-                io_socket.to(msg.auction).emit('s2c-chat', msg, maxprice);
-            });
         });
     });
 });
