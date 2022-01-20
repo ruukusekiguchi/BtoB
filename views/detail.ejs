@@ -2,7 +2,7 @@
 
 
 <div class="col-3 table1">
-    <img src="../img/<%= data[0].car_detail_id %>.jpg" id="topimg"  width="500" >
+    <img src="/img/<%= data[0].car_detail_id %>.jpg" id="topimg"  width="500" >
     <ul class="list1">
         <li>評価</li>
         <p id ="evaluation" class="">4</p>
@@ -121,6 +121,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script> 
     const auctionid =  "<%= data[0].id %>";
+    const userid =  "<%= userid %>";
     let end_time = "<%= data[0].end_time %>";
 
     console.log(end_time);

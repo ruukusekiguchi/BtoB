@@ -56,6 +56,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Static folder
+app.use(express.static(__dirname + '/public', {index: false}));
 app.use(express.static(__dirname + '/views', {index: false}));
 
 //Routes

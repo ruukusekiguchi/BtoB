@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+.top{
+    display: flex;
+    justify-content: center;
+}
+
+.row{
+    /* text-align: center; */
+}
+
+.table1{
+    text-align: left;
+}
+
+#topimg{
+    width:50%;
+}
+
+.list1{
+    display: flex;
+    padding-left: 0%;
+    /* width: 30%; */
+}
+
+.list1 li{
+    justify-content: center;
+    list-style-type:none;
+    font-size: 200%;
+}
+
+/* #img{
+    width: 50%;
+    
+} */
+
+.table{
+    text-align: center;
+}
+
+.money{
+    font-size: 200%;
+}
+
+.parmitionposition{
+    text-align: center;
+}
+
+.parmition{
+    font-size: 300%;
+    text-align: center;
+    border-bottom: double 10px;
+}
+
+#detail{
+    text-decoration: none;
+    border: none;
+}

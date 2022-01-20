@@ -26,9 +26,9 @@ router.get('/', (req, res) => {
 
 //詳細ボタン後表示：オークション詳細画面
 //route GET, '/auction/id', detail.ejs
-router.get('/:id', (req, res) => {
+router.get('/:userid/:carid', (req, res) => {
     let values = [
-        req.params.id
+        req.params.carid
     ];
     connection.query("SELECT * FROM car_detail c INNER JOIN auction a ON c.id = a.car_detail_id WHERE c.id=?;", values, (error, results) => {
         if(error){
@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
         }
         console.log("車情報取得");
         console.log(results);
-        res.render("./detail.ejs", {data:results});
+        res.render("./detail.ejs", {data:results, userid:req.params.userid});
     });
 });
 
