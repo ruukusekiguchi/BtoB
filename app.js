@@ -5,22 +5,6 @@ const io_socket = require('socket.io')(http_socket);
 const mysql = require("mysql");
 const passport = require('passport');
 const session = require('express-session');
-// const mysql = require('mysql');
-
-
-//Connect to DB
-// //接続
-// const connection =mysql.createConnection({
-//     host:'localhost',
-//     user:'root',
-//     password:'',
-//     port:3306,
-//     database:'auction_master'
-// });
-// //error
-// connection.connect((error)=>{
-//     if(error){
-//         console.log('error connecting:'+err.stack);
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -64,6 +48,41 @@ app.use('/', require('./routes/index'));
 app.use('/user', require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
 app.use('/auction', require('./routes/auction'));
+
+const cron = require('node-cron');
+//開催しているオークションの終了時間を取得
+connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (error, results) => {
+    if(error){
+        console.log('error connecting:' + error.stack);
+        return;
+    }
+    console.log("オークションの終了時間を取得");
+    console.log(results);
+
+    for(i = 0; i < results.length; i++){
+        endTime = new Date(results[i].end_time);
+        let auctionid = results[i].id;
+        let month = endTime.getMonth() + 1;
+        let date = endTime.getDate();
+        let hour = endTime.getHours();
+        let min = endTime.getMinutes() + 1;
+        console.log(month + '月' + date + '日' + hour + '時間' + min + '分');
+
+        cron.schedule('00 ' + min + ' ' + hour + ' ' + date + ' ' + month + ' *', () => {
+            let values = [
+                auctionid
+            ]
+            connection.query("UPDATE auction SET status_flag = 2 WHERE id = ?;", values, (error, results) => {
+                if(error){
+                    console.log('error connecting:' + error.stack);
+                    return;
+                }
+                console.log("オークションの終了時にstatus変更");
+                console.log(results);
+            });
+        });
+    }
+});
 
 http_socket.listen(3000, () => console.log("server run and up"));
 
