@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../public/css/details.css">
-    <link rel="stylesheet" href="../css/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
-    <script src="../js/index.js"></script>
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+
     <title>Toppage</title>
 </head>
 <body>
@@ -18,11 +18,20 @@
         <p id ="evaluation" class=""><%= data[0].car_evapoint %>点</p>
     </ul>
 </div>
+<div>
+    <p>入札件数：<span id="bid_num"><%= data[0].bid_num %></span>件</p>
+    <p>残り時間：<span id="remainingDate"></span></p>
+    <p>現在価格：<span id="nowprice" class="money"><%= data[0].bid_price %></span>円</p>
+    <form id = "chatForm">
+        <p>金額:<input id="price" type="text"></p>
+        <input type ="submit" class="btn btn-warning" value ="入札する">
+    </form>
+</div>
 <hr>
 <div class="col-8">
     <table class="table table-bordered table-hover">
         <tr >
-            <th colspan="4" class="money">￥10000</th>
+            <th colspan="4" class="money">車詳細情報</th>
         </tr>
         <tr>
             <td>年式</td>
@@ -118,18 +127,10 @@
         </tr>
     </table>
 </div>
-<div id ="auction" >
-    <p>入札件数:</p><p id="remainingDate"></p>
-    <p id="nowprice">現在価格:<%= data[0].bid_price %></p>
-<form id = "chatForm">
-    <p>金額:<input id="price" type="text"></p>
-    <input type ="button" class="btn btn-warning" value ="入札する">
-</form>
-</div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script> 
-    const auctionid =  "<%= data[0].id %>";
+    const auctionid =  "<%= auctionid %>";
     const userid =  "<%= userid %>";
     let end_time = new Date("<%= data[0].end_time %>");
 
@@ -137,8 +138,7 @@
     function countdownTimer(){
         var now_time = new Date();
         var difference = end_time - now_time;
-        console.log(difference);
-
+    
         if(difference >= 0){
             var hour = Math.floor(difference / (1000 * 60 * 60));
             difference -= (hour *(1000 * 60 * 60));
@@ -159,6 +159,8 @@
     }
     countdownTimer();
 </script>
-<script src="/js/javascript.js"></script>
+
+<script src="/js/socket.js"></script>
+
 </body>
 </html>

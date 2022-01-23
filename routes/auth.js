@@ -38,7 +38,7 @@ router.post('/login',
     {
         session: false,
         //successRedirect: '/auction',
-        failureRedirect: '/auction'
+        failureRedirect: '/'
     }
     ),
     function(req, res){
@@ -48,16 +48,10 @@ router.post('/login',
     }
 );
 
-// //ログアウト処理
-// router.get('/logout', (req, res) => {
-//   req.logout();
-//   res.redirect('/');
-
 //ログアウト
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
-
 });
 
 module.exports = router;

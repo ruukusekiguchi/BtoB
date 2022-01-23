@@ -73,34 +73,50 @@ io_socket.on('connection', function(socket){
         socket.join(msg.auction);
     });
     socket.on('c2s-chat', function(msg){
+        //sql1...
         values = [
-            'bid',
-            msg.auction,
-            msg.user,
-            msg.price
+            msg.price,
+            msg.auctionid
         ];
         console.log(values);
-        connection.query("INSERT INTO ??(auctionid,userid,price) VALUES(?,?,?);", values, (error, results) => {
+        connection.query("UPDATE auction SET bid_price=? WHERE id=?;", values, (error, results) => {
             if(error){
                 res.status(400).send({values:'Error'});
                 return;
             }
-            console.log('入札完了');
+            console.log('auctionテーブルの入札価格更新');
             console.log(results);
 
+            //sql2...
             values = [
-                'bid',
-                msg.auction
+                msg.userid,
+                msg.auctionid
             ];
-            connection.query("SELECT MAX(price) AS maxprice FROM ?? WHERE auctionid=?;", values, (error, results) => {
+            console.log(values);
+            connection.query("INSERT INTO bid_history(user_info_id,auction_id) VALUES(?,?);", values, (error, results) => {
                 if(error){
-                    console.log('error connecting:' + error.stack);
+                    res.status(400).send({values:'Error'});
                     return;
                 }
-                console.log('最高額取得');
-                console.log('c2s:' + msg.auction + msg.user + results[0].maxprice);
-                maxprice = results[0].maxprice;
-                io_socket.to(msg.auction).emit('s2c-chat', msg, maxprice);
+                console.log('bid_historyに入札履歴挿入');
+                console.log(results);
+
+                //sql3...
+                values = [
+                    msg.auctionid
+                ];
+                console.log(values);
+                connection.query("SELECT a.bid_price, COUNT(bh.auction_id) AS bid_num FROM auction a INNER JOIN bid_history bh ON a.id = bh.auction_id WHERE a.id=?;", values, (error, results) => {
+                    if(error){
+                        console.log('error connecting:' + error.stack);
+                        return;
+                    }
+                    console.log('auctionテーブルから最高額取得');
+                    console.log('c2s:' + results[0].bid_price + results[0].bid_num);
+                    maxprice = results[0].bid_price;
+                    bidnum = results[0].bid_num;
+                    io_socket.to(msg.auctionid).emit('s2c-chat', maxprice, bidnum);
+                });
             });
         });
     });
