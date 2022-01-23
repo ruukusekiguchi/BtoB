@@ -34,7 +34,11 @@
         <div class="col-4">
             <table class="table table-bordered table-hover">
                 <tr >
-                    <th colspan="2" class="money">￥<%= values[i].bid_price %></th>
+                    <% if(values[i].bid_price > values[i].min_price){ %>
+                        <th colspan="2" class="money">￥<%= values[i].bid_price %></th>
+                    <% } else{ %>
+                        <th colspan="2" class="money">￥<%= values[i].min_price %></th>
+                    <% } %>
                 </tr>
                 <tr>
                     <td>年式</td>
@@ -72,7 +76,7 @@
             </table>
         </div>
         <div class="col-4">
-            <div id="endTime" class="parmition"></div>
+            <div id="endTime<%= values[i].id %>" class="parmition"></div>
             <script>
                 function countdownTimer(){
                     var now_time = new Date();
@@ -88,7 +92,7 @@
                     remaining += ("0" + hour).slice(-2) + ':';
                     remaining += ("0" + minutes).slice(-2) + ':';
                     remaining += ("0" + second).slice(-2);
-                    document.getElementById("endTime").innerHTML = remaining;
+                    document.getElementById("endTime<%= values[i].id %>").innerHTML = remaining;
                     setTimeout(countdownTimer, 250);
                 }
                 countdownTimer();

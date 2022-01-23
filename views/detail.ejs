@@ -21,7 +21,11 @@
 <div>
     <p>入札件数：<span id="bid_num"><%= data[0].bid_num %></span>件</p>
     <p>残り時間：<span id="remainingDate"></span></p>
-    <p>現在価格：<span id="nowprice" class="money"><%= data[0].bid_price %></span>円</p>
+    <% if(data[0].bid_price > data[0].min_price){ %>
+        <p>現在価格：<span id="nowprice" class="money"><%= data[0].bid_price %></span>円</p>
+    <% } else{ %>
+        <p>現在価格：<span id="nowprice" class="money"><%= data[0].min_price %></span>円</p>
+    <% } %>
     <form id = "chatForm">
         <p>金額:<input id="price" type="text"></p>
         <input type ="submit" class="btn btn-warning" value ="入札する">
