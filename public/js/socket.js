@@ -18,8 +18,10 @@ form.addEventListener("submit", function(event){
     socketio.emit('c2s-chat', sendData);
 });
 
-socketio.on('s2c-chat', function(msg, maxprice){
+socketio.on('s2c-chat', function(maxprice, bidnum){
     var nowprice = document.getElementById("nowprice");
-    console.log('ソケットs2c-chat1:' + msg.user + maxprice);
+    var bid_num = document.getElementById("bid_num");
+    console.log('ソケットs2c-chat1:' + maxprice + ' ' + bidnum);
     nowprice.innerHTML = maxprice;
+    bid_num.innerHTML = bidnum;
 });
