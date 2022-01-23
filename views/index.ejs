@@ -10,98 +10,101 @@
 </head>
 <body>
 <header>ヘッダー</header>
-
-<% for(var i = 0; i < values.length; i++) { %>
-    <div class="container">
-        <div class="row row-0">
-            <div class="col-6">
-                <h1><%= values[i].car_maker %></h1>
-            </div>
-            <div class="col-6">
-                <h2><%= values[i].car_name %></h2>
-            </div>
-        </div>
-    </div>
-    <div class="container" class="con">
-        <div class="row row-0">
-        <div class="col-4 table1">
-            <img src="/img/<%= values[i].car_detail_id %>.jpg" id="topimg">
-            <ul class="list1">
-                <li>総合評価:</li>
-                <li>4</li>
-            </ul>
-        </div>
-        <div class="col-4">
-            <table class="table table-bordered table-hover">
-                <tr >
-                    <% if(values[i].bid_price > values[i].min_price){ %>
-                        <th colspan="2" class="money">￥<%= values[i].bid_price %></th>
-                    <% } else{ %>
-                        <th colspan="2" class="money">￥<%= values[i].min_price %></th>
-                    <% } %>
-                </tr>
-                <tr>
-                    <td>年式</td>
-                    <td><%= values[i].car_age %>年</td>
-                </tr>
-                <tr>
-                    <td>型式</td>
-                    <td><%= values[i].car_model %></td>
-                </tr>            
-                <tr>
-                    <td>排気量</td>
-                    <td><%= values[i].car_displacement %>cc</td>
-                </tr>            
-                <tr>
-                    <td>走行距離</td>
-                    <td><%= values[i].car_mileage %>km</td>
-                </tr>
-                <tr>
-                    <td>車検</td>
-                    <% if(values[i].car_inspection == 0){ %>
-                        <td>無</td>
-                    <% } else{ %>
-                        <td>無</td>
-                    <% } %>
-                </tr>
-                <tr>
-                    <td>トランスミッション</td>
-                    <% if(values[i].car_inspection == 0){ %>
-                        <td>AT</td>
-                    <% } else{ %>
-                        <td>MT</td>
-                    <% } %>
-                </tr>
-                
-            </table>
-        </div>
-        <div class="col-4">
-            <div id="endTime<%= values[i].id %>" class="parmition"></div>
-            <script>
-                function countdownTimer(){
-                    var now_time = new Date();
-                    let end_time = new Date("<%= values[i].end_time %>");
-                    var difference = end_time - now_time;
-                
-                    var hour = Math.floor(difference / (1000 * 60 * 60));
-                    difference -= (hour *(1000 * 60 * 60));
-                    var minutes = Math.floor(difference / (1000 * 60));
-                    difference -= (minutes * (1000 * 60));
-                    var second = Math.floor(difference / 1000);
-                    var remaining = "";
-                    remaining += ("0" + hour).slice(-2) + ':';
-                    remaining += ("0" + minutes).slice(-2) + ':';
-                    remaining += ("0" + second).slice(-2);
-                    document.getElementById("endTime<%= values[i].id %>").innerHTML = remaining;
-                    setTimeout(countdownTimer, 250);
-                }
-                countdownTimer();
-            </script>
-            <div class="parmitionposition">
-                <a href="/auction/<%= data.id %>/<%= values[i].id %>" class="parmition" id="detail">詳細</a>
+<% if(values != ""){%>
+    <% for(var i = 0; i < values.length; i++) { %>
+        <div class="container">
+            <div class="row row-0">
+                <div class="col-6">
+                    <h1><%= values[i].car_maker %></h1>
+                </div>
+                <div class="col-6">
+                    <h2><%= values[i].car_name %></h2>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="container" class="con">
+            <div class="row row-0">
+            <div class="col-4 table1">
+                <img src="/img/<%= values[i].car_detail_id %>.jpg" id="topimg">
+                <ul class="list1">
+                    <li>総合評価:</li>
+                    <li>4</li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <table class="table table-bordered table-hover">
+                    <tr >
+                        <% if(values[i].bid_price > values[i].min_price){ %>
+                            <th colspan="2" class="money">￥<%= values[i].bid_price %></th>
+                        <% } else{ %>
+                            <th colspan="2" class="money">￥<%= values[i].min_price %></th>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <td>年式</td>
+                        <td><%= values[i].car_age %>年</td>
+                    </tr>
+                    <tr>
+                        <td>型式</td>
+                        <td><%= values[i].car_model %></td>
+                    </tr>            
+                    <tr>
+                        <td>排気量</td>
+                        <td><%= values[i].car_displacement %>cc</td>
+                    </tr>            
+                    <tr>
+                        <td>走行距離</td>
+                        <td><%= values[i].car_mileage %>km</td>
+                    </tr>
+                    <tr>
+                        <td>車検</td>
+                        <% if(values[i].car_inspection == 0){ %>
+                            <td>無</td>
+                        <% } else{ %>
+                            <td>無</td>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <td>トランスミッション</td>
+                        <% if(values[i].car_inspection == 0){ %>
+                            <td>AT</td>
+                        <% } else{ %>
+                            <td>MT</td>
+                        <% } %>
+                    </tr>
+                    
+                </table>
+            </div>
+            <div class="col-4">
+                <div id="endTime<%= values[i].id %>" class="parmition"></div>
+                <script>
+                    function countdownTimer(){
+                        var now_time = new Date();
+                        let end_time = new Date("<%= values[i].end_time %>");
+                        var difference = end_time - now_time;
+                    
+                        var hour = Math.floor(difference / (1000 * 60 * 60));
+                        difference -= (hour *(1000 * 60 * 60));
+                        var minutes = Math.floor(difference / (1000 * 60));
+                        difference -= (minutes * (1000 * 60));
+                        var second = Math.floor(difference / 1000);
+                        var remaining = "";
+                        remaining += ("0" + hour).slice(-2) + ':';
+                        remaining += ("0" + minutes).slice(-2) + ':';
+                        remaining += ("0" + second).slice(-2);
+                        document.getElementById("endTime<%= values[i].id %>").innerHTML = remaining;
+                        setTimeout(countdownTimer, 250);
+                    }
+                    countdownTimer();
+                </script>
+                <div class="parmitionposition">
+                    <a href="/auction/<%= data.id %>/<%= values[i].id %>" class="parmition" id="detail">詳細</a>
+                </div>
+            </div>
+        </div>
+    <% } %>
+<% }else {%>
+    <h2>開催中のオークションはありません</h2>
 <% } %>
 </body>
 </html>

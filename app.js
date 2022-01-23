@@ -95,10 +95,11 @@ io_socket.on('connection', function(socket){
         //sql1...
         values = [
             msg.price,
+            msg.userid,
             msg.auctionid
         ];
         console.log(values);
-        connection.query("UPDATE auction SET bid_price=? WHERE id=?;", values, (error, results) => {
+        connection.query("UPDATE auction SET bid_price = ?, user_info_id = ? WHERE id=?;", values, (error, results) => {
             if(error){
                 res.status(400).send({values:'Error'});
                 return;

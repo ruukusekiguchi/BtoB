@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 //route GET, '/auction', index.ejs
 router.get('/', (req, res) => {
     console.log(req.session.username);
-    connection.query("SELECT * FROM car_detail c INNER JOIN auction a ON c.id = a.car_detail_id;", (error, results) => {
+    connection.query("SELECT * FROM auction a INNER JOIN car_detail cd ON a.car_detail_id = cd.id WHERE a.status_flag = 0;", (error, results) => {
         if(error){
             console.log('error connecting:' + error.stack);
             return;
