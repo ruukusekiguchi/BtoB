@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
         }
         console.log("車一覧取得");
         console.log(results);
-        res.render("./index.ejs", {data:req.session.username, values:results});
+        res.render("./index.ejs", {userid:req.session.username.id, values:results});
     });
 });
 

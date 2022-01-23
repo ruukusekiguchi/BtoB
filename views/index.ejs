@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
-    <script src="/js/index.js"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>
     <title>Toppage</title>
 </head>
 <body>
-<header>ヘッダー</header>
+<%- include("partials/header.ejs", {userid: userid}) %>
 <% if(values != ""){%>
     <% for(var i = 0; i < values.length; i++) { %>
         <div class="container">
@@ -98,7 +97,7 @@
                     countdownTimer();
                 </script>
                 <div class="parmitionposition">
-                    <a href="/auction/<%= data.id %>/<%= values[i].id %>" class="parmition" id="detail">詳細</a>
+                    <a href="/auction/<%= userid %>/<%= values[i].id %>" class="parmition" id="detail">詳細</a>
                 </div>
             </div>
         </div>
