@@ -57,6 +57,16 @@
     border-bottom: double 10px;
 }
 
+/* #bottom{
+    display: flex;
+    align-items: flex-end;
+} */
+
+/* .parmitionposition{
+    display: flex;
+    align-items: flex-end;
+} */
+
 #detail{
     text-decoration: none;
     border: none;
