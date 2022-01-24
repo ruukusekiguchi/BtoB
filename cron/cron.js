@@ -24,15 +24,16 @@ connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (err
         let month = endTime.getMonth() + 1;
         let date = endTime.getDate();
         let hour = endTime.getHours();
-        let min = endTime.getMinutes() + 1;
-        if(min == 60){
-            min = 0;
-            hour++;
+        let min = endTime.getMinutes();
+        let sec = endTime.getSeconds() + 1;
+        if(sec == 60){
+            sec = 0;
+            min++;
         }
-        console.log(month + '月' + date + '日' + hour + '時' + min + '分');
+        console.log(month + '月' + date + '日' + hour + '時' + min + '分' + sec + '秒');
 
         //指定時間になると動く
-        cron.schedule('00 ' + min + ' ' + hour + ' ' + date + ' ' + month + ' *', () => {
+        cron.schedule( sec + ' ' + min + ' ' + hour + ' ' + date + ' ' + month + ' *', (req, res) => {
             let dt = new Date();
             date = new Date(dt.getFullYear(), dt.getMonth() + 2, 0); //翌月の末日取得
             
@@ -75,7 +76,7 @@ connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (err
                             return;
                         }
                         console.log("落札者情報挿入");
-                        console.log(results);                     
+                        console.log(results);
                     });
                 });
             });

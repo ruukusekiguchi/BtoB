@@ -53,7 +53,7 @@ router.get('/mypage/:userid', (req, res) => {
         console.log("マイページ情報取得");
         console.log(results);
 
-        res.render('mypage.ejs', {values:results, userid:req.params.userid, username:results[0].user_name});
+        res.render('mypage.ejs', {values:results, userid:req.params.userid});
     });
 });
 
