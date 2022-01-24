@@ -1,26 +1,71 @@
-<%- include("partials/header.ejs", {userid: values[i].user_info_id}) %>
-<% if(values != ""){%>
-<div class="container">
-    <h2><%= values[i].user_info_id %>様のマイページ</h2>
-    <div class="row row-0">
-        <p class="parmition">未納品</p>
+<%- include("partials/header.ejs", {userid: userid}) %>
+<% if(values != ""){ %>
+    <div class="container">
+        <h2><%= username %>様のマイページ</h2>
         <div class="row row-0">
-            <table class="table table-bordered table-hover">
-                <tr>
-                    <th>商品名</th>
-                    <th>値段</th>
-                    <th>日時</th>
-                    <th>期限</th>
-                    <th>ステータス</th> 
-                </tr>
-                <!--ループで回す-->
-                <tr>
-                    <td><%= values[i].auction_id %></td>
-                </tr>
-            </table>
+            <div class="row row-0">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>商品名</th>
+                        <th>値段</th>
+                        <th>落札日時</th>
+                        <th>支払い期限</th>
+                        <th>ステータス</th> 
+                    </tr>
+                    <% for (var i = 0; i < values.length; i++) { %>
+                        <tr>
+                            <td><%= values[i].car_maker + values[i].car_name %></td>
+                            <td><%= values[i].payment_money %>円</td>
+                            <td id="payment_date<%= values[i].auction_id %>"></td>
+                            <td id="payment_limit<%= values[i].auction_id %>"></td>
+                            <% if(values[i].payment_flag == 0){ %>
+                                <td>未支払い</td>
+                            <% }else { %>
+                                <td>支払い済み</td>
+                            <% } %>
+                        </tr>
+                        <script>
+                            function countdownTimer1(){
+                                let payment_date = new Date("<%= values[i].payment_date %>");
+                                let month = payment_date.getMonth() + 1;
+                                let day = payment_date.getDate();
+                                let hour = payment_date.getHours();
+                                let min = payment_date.getMinutes();
+                                let sec = payment_date.getSeconds();
+                            
+                                var remaining = "";
+                                remaining += ("0" + month).slice(-2) + '月';
+                                remaining += ("0" + day).slice(-2) + '日';
+                                remaining += ("0" + hour).slice(-2) + ':';
+                                remaining += ("0" + min).slice(-2) + ':';
+                                remaining += ("0" + sec).slice(-2);
+                                document.getElementById("payment_date<%= values[i].auction_id %>").innerHTML = remaining;
+                            }
+
+                            function countdownTimer2(){
+                                let payment_limit = new Date("<%= values[i].payment_limit %>");
+                                let month = payment_limit.getMonth() + 1;
+                                let day = payment_limit.getDate();
+                                let hour = payment_limit.getHours();
+                                let min = payment_limit.getMinutes();
+                                let sec = payment_limit.getSeconds();
+                            
+                                var remaining = "";
+                                remaining += ("0" + month).slice(-2) + '月';
+                                remaining += ("0" + day).slice(-2) + '日';
+                                remaining += ("0" + hour).slice(-2) + ':';
+                                remaining += ("0" + min).slice(-2) + ':';
+                                remaining += ("0" + sec).slice(-2);
+                                document.getElementById("payment_limit<%= values[i].auction_id %>").innerHTML = remaining;
+                            }
+                            countdownTimer1();
+                            countdownTimer2();
+                        </script>
+                    <% } %>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 <% }else {%>
     <h2>落札情報はありません</h2>
 <% } %>

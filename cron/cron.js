@@ -33,6 +33,8 @@ connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (err
 
         //指定時間になると動く
         cron.schedule('00 ' + min + ' ' + hour + ' ' + date + ' ' + month + ' *', () => {
+            let dt = new Date();
+            date = new Date(dt.getFullYear(), dt.getMonth() + 2, 0); //翌月の末日取得
             
             //オークション終了時にステータス変更
             let values = [
@@ -63,9 +65,11 @@ connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (err
                         results[0].id,
                         results[0].user_info_id,
                         results[0].bid_price,
-                        0,
+                        dt,
+                        date,
+                        0
                     ]
-                    connection.query("INSERT INTO payment(auction_id,user_info_id,payment_money,payment_flag) VALUES(?,?,?,?);", values, (error, results) => {
+                    connection.query("INSERT INTO payment(auction_id,user_info_id,payment_money,payment_date,payment_limit,payment_flag) VALUES(?,?,?,?,?,?);", values, (error, results) => {
                         if(error){
                             console.log('error connecting:' + error.stack);
                             return;

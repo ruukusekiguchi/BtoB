@@ -45,14 +45,15 @@ router.get('/mypage/:userid', (req, res) => {
     values = [
         req.params.userid
     ]
-    connection.query("SELECT * FROM payment WHERE id = ?;", values, (error, results) => {
+    connection.query("SELECT * FROM payment p INNER JOIN auction a ON p.auction_id = a.id INNER JOIN car_detail cd ON a.car_detail_id = cd.id INNER JOIN user_info ui ON p.user_info_id = ui.id WHERE p.user_info_id = ?;", values, (error, results) => {
         if(error){
             console.log('error connecting:' + error.stack);
             return;
         }
         console.log("マイページ情報取得");
         console.log(results);
-        res.render('mypage.ejs', {values:results});
+
+        res.render('mypage.ejs', {values:results, userid:req.params.userid, username:results[0].user_name});
     });
 });
 
