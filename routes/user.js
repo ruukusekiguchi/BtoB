@@ -39,4 +39,21 @@ router.post('/', (req, res) => {
     });
 });
 
+//マイページ：マイページ画面
+//route GET, '/user/mypage/id',
+router.get('/mypage/:userid', (req, res) => {
+    values = [
+        req.params.userid
+    ]
+    connection.query("SELECT * FROM payment WHERE id = ?;", values, (error, results) => {
+        if(error){
+            console.log('error connecting:' + error.stack);
+            return;
+        }
+        console.log("マイページ情報取得");
+        console.log(results);
+        res.render('mypage.ejs', {values:results});
+    });
+});
+
 module.exports = router;

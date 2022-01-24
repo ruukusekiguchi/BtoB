@@ -31,7 +31,10 @@ connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (err
         }
         console.log(month + '月' + date + '日' + hour + '時' + min + '分');
 
+        //指定時間になると動く
         cron.schedule('00 ' + min + ' ' + hour + ' ' + date + ' ' + month + ' *', () => {
+            
+            //オークション終了時にステータス変更
             let values = [
                 auctionid
             ]
@@ -43,6 +46,7 @@ connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (err
                 console.log("オークションの終了時にstatus変更");
                 console.log(results);
 
+                //オークション終了時にオークション情報取得
                 values = [
                     auctionid
                 ]
@@ -54,7 +58,21 @@ connection.query("SELECT id, end_time FROM auction WHERE status_flag = 0;", (err
                     console.log("オークションの終了時のオークション情報取得");
                     console.log(results);
     
-                    
+                    //オークション終了時にpaymentテーブルに落札情報を挿入
+                    values = [
+                        results[0].id,
+                        results[0].user_info_id,
+                        results[0].bid_price,
+                        0,
+                    ]
+                    connection.query("INSERT INTO payment(auction_id,user_info_id,payment_money,payment_flag) VALUES(?,?,?,?);", values, (error, results) => {
+                        if(error){
+                            console.log('error connecting:' + error.stack);
+                            return;
+                        }
+                        console.log("落札者情報挿入");
+                        console.log(results);                     
+                    });
                 });
             });
         });
