@@ -75,22 +75,20 @@
                 </table>
             </div>
             <div class="col-4">
-                <div id="endTime<%= values[i].id %>" class="parmition"></div>
+                <div><span  id="endTime<%= values[i].id %>" class="parmition"></span>まで</div>
                 <script>
                     function countdownTimer(){
-                        var now_time = new Date();
                         let end_time = new Date("<%= values[i].end_time %>");
-                        var difference = end_time - now_time;
+                        let day = end_time.getDate();
+                        let hour = end_time.getHours();
+                        let min = end_time.getMinutes();
+                        let sec = end_time.getSeconds();
                     
-                        var hour = Math.floor(difference / (1000 * 60 * 60));
-                        difference -= (hour *(1000 * 60 * 60));
-                        var minutes = Math.floor(difference / (1000 * 60));
-                        difference -= (minutes * (1000 * 60));
-                        var second = Math.floor(difference / 1000);
                         var remaining = "";
+                        remaining += ("0" + day).slice(-2) + '日';
                         remaining += ("0" + hour).slice(-2) + ':';
-                        remaining += ("0" + minutes).slice(-2) + ':';
-                        remaining += ("0" + second).slice(-2);
+                        remaining += ("0" + min).slice(-2) + ':';
+                        remaining += ("0" + sec).slice(-2);
                         document.getElementById("endTime<%= values[i].id %>").innerHTML = remaining;
                         setTimeout(countdownTimer, 250);
                     }
