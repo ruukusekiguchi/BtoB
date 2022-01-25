@@ -4,6 +4,9 @@
     
 }
 
+.border{
+    border-bottom: solid 1px;
+}
 
 .top{
     display: flex;
@@ -52,7 +55,7 @@
 }
 
 .parmition{
-    font-size: 300%;
+    font-size: 250%;
     text-align: center;
     border-bottom: double 10px;
 }

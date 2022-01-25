@@ -10,6 +10,7 @@
 <body>
 <%- include("partials/header.ejs", {userid: userid}) %>
 <% if(values != ""){%>
+
     <% for(var i = 0; i < values.length; i++) { %>
         <div class="container">
             <div class="row row-0">
@@ -98,6 +99,7 @@
                     <a href="/auction/<%= userid %>/<%= values[i].id %>" class="parmition" id="detail">詳細</a>
                 </div>
             </div>
+        </div>
         </div>
     <% } %>
 <% }else {%>
